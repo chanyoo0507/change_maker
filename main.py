@@ -5,8 +5,8 @@ import random
 st.title("암기도우미 1.0")
 
 def load_animation():
-    r1 = rq.get(https://lottiefiles.com/free-animation/correct-JwZs0nPkwu)
-    r2 = rq.get(https://lottiefiles.com/free-animation/incorrect-NZdw5E0PZC)
+    r1 = rq.get("https://lottiefiles.com/free-animation/correct-JwZs0nPkwu")
+    r2 = rq.get("https://lottiefiles.com/free-animation/incorrect-NZdw5E0PZC")
     if r1.status_code != 200:
         return None
     if r2.status_code != 200:
