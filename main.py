@@ -23,7 +23,7 @@ def make_question(df):
     question = df["질문"][q_index]
     answer_list = df["답변"]
     answer = answer_list[q_index]
-    wrong_answers = df["답변"].tolist().remove(answer)
+    wrong_answers = df["답변"].unique().tolist()
     a_index = random.randint(0,min(len(wrong_answers),4))
     answers = []
     for i in range(0,min(len(wrong_answers)+1,5)):
