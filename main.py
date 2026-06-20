@@ -21,9 +21,9 @@ def load_file(uploaded_file):
 def make_question(df):
     q_index = random.randint(0,len(df["question_id"])-1)
     question = df["질문"][q_index]
-    answer_list = df["답변"].tolist()
+    answer_list = df["답변"]
     answer = answer_list[q_index]
-    wrong_answers = answer_list.unique().remove(answer)
+    wrong_answers = df["답변"].unique().tolist().remove(answer)
     a_index = random.randint(0,min(len(wrong_answers),4))
     answers = []
     for i in range(0,min(len(wrong_answers)+1,5)):
