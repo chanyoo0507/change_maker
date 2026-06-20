@@ -61,6 +61,8 @@ def select_question(df, mode):
 st.session_state.setdefault("questions_left",[])
 st.session_state.setdefault("question_now",0)
 st.session_state.setdefault("next", 0)
+st.session_state.setdefault("animation1", None)
+st.session_state.setdefault("animation2", None)
 if st.session_state["animation1"] is None:
     st.session_state["animation1"] = load_animation("https://lottie.host/0ab1b960-3f7a-4428-8134-b3a80dcb51ee/D7JGop9mCJ.json")
     st.rerun()
