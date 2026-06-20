@@ -8,8 +8,8 @@ st.title("암기도우미 1.0")
 
 @st.cache_data
 def load_animation():
-    r1 = rq.get("https://lottiefiles.com/free-animation/correct-JwZs0nPkwu")
-    r2 = rq.get("https://lottiefiles.com/free-animation/incorrect-NZdw5E0PZC")
+    r1 = rq.get('https://app.lottiefiles.com/share/6f9923d3-9521-46f4-8434-7a91740efc72')
+    r2 = rq.get('https://app.lottiefiles.com/share/71f1d0cc-3a08-42c9-8930-a1cc714bbed2')
     return (r1.json(),r2.json()) if r1.ok and r2.ok else None
 
 def print_animation(animations, index):
@@ -62,6 +62,7 @@ st.session_state.setdefault("next", 0)
 st.session_state.setdefault("animations", None)
 if st.session_state["animations"] is None:
     st.session_state["animations"] = load_animation()
+    rerun()
 
 uploaded_file = st.file_uploader("엑셀 파일을 업로드하세요",type=["xlsx"])
 if uploaded_file is not None:
