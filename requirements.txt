@@ -1,5 +1,5 @@
 streamlit
 pandas
 openpyxl
-lottie
+streamlit_lottie
 random
