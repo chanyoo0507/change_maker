@@ -17,7 +17,8 @@ def load_animation():
     return r1.json()
 
 def print_animation(animations, index):
-    st_lottie(animations[index], speed=2, loop=False, width=400, height=400)
+    if animations is not None:
+        st_lottie(animations[index], speed=2, loop=False, width=400, height=400)
 
 def load_file(uploaded_file):
     df = pd.read_excel(uploaded_file)
@@ -66,7 +67,6 @@ st.session_state.setdefault("next", 0)
 st.session_state.setdefault("animations", None)
 if st.session_state["animations"] is None:
     st.session_state["animations"] = load_animation()
-    rerun()
 
 uploaded_file = st.file_uploader("엑셀 파일을 업로드하세요",type=["xlsx"])
 if uploaded_file is not None:
