@@ -8,8 +8,8 @@ st.title("암기도우미 1.0")
 
 @st.cache_data
 def load_animation():
-    r1 = rq.get("https://lottie.host/07c18784-e513-474f-b579-2dfb46350ee8/mJoPjJKc5I.lottie")
-    r2 = rq.get("https://lottie.host/b45c4f65-636e-449a-807f-d7d2ccd117ed/DfQgP8x4Wg.lottie")
+    r1 = rq.get("https://lottie.host/0ab1b960-3f7a-4428-8134-b3a80dcb51ee/D7JGop9mCJ.json")
+    r2 = rq.get("https://lottie.host/d2070fb5-8d52-41e0-a50b-748dbea63ecf/HNnk4aRdpN.json")
     if r1.status_code != 200:
         return None
     if r2.status_code != 200:
@@ -92,4 +92,4 @@ if uploaded_file is not None:
             else:
                 st.markdown(":red[오답]")
                 st.markdown(":red[입력한 답 : %s, 정답 : %s]"%(answer, question['answer']))
-                print_animation(st.session_state["animations"], 0)
+                print_animation(st.session_state["animations"], 1)
