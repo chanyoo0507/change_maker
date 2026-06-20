@@ -23,7 +23,7 @@ def make_question(df):
     question = df["질문"][q_index]
     answer_list = df["답변"]
     answer = answer_list[q_index]
-    wrong_answers = df["답변"].tolist()
+    wrong_answers = df["답변"].tolist().remove(answer)
     a_index = random.randint(0,min(len(wrong_answers),4))
     answers = []
     for i in range(0,min(len(wrong_answers)+1,5)):
@@ -42,7 +42,7 @@ if mode == 0:
     if uploaded_file is not None:
         df = load_file(uploaded_file)
         next = st.button("다음으로")
-        if st.button:
+        if next:
             mode = 1
 if mode == 1:
     question = make_question(df)
