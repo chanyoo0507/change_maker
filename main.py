@@ -72,23 +72,24 @@ if st.session_state["animation1"] is None:
 if st.session_state["animation2"] is None:
     st.session_state["animation2"] = load_animation("https://lottie.host/d2070fb5-8d52-41e0-a50b-748dbea63ecf/HNnk4aRdpN.json")
 
-st.subheader("사용법")
-st.write("1. 학습을 원하는 내용의 학습자료(교과서, 프린트물 등)의 사진을 찍거나 PDF파일을 준비하세요")
-st.write("2. 다음 프롬프트를 복사해 AI(gemini, chatGPT 등)에게 1의 자료와 함께 입력하세요")
-st.code("""다음 조건에 따라 .xlsx파일을 작성해줘
-
---고정된 셀(각 셀 별로 변형없이 ':'이후부터 그대로 입력할 것)--
-셀A1:question_id
-셀B1:질문
-셀C1:답변
-
---나머지 셀--
-첨부된 사진 또는 PDF 자료를 바탕으로 학습을 점검하기 위한 최대한 많은 단답형 질문을 만들어줘
-A열에는 A2:0부터 시작하여 1씩 증가하는 질문 번호를 매겨줘
-B열에는 B2부터 시작하여 만들어진 질문을 작성해줘
-C열에는 C2부터 시작하여 만들어진 질문의 답변을 작성해줘
-A,B,C열 이외에는 건드리지 말고, 빈 값이 없도록 하며, 질문 번호 작성은 마지막 질문까지 해줘
-""")
+if st.session_state["next"] = 0:
+    st.subheader("사용법")
+    st.write("1. 학습을 원하는 내용의 학습자료(교과서, 프린트물 등)의 사진을 찍거나 PDF파일을 준비하세요")
+    st.write("2. 다음 프롬프트를 복사해 AI(gemini, chatGPT 등)에게 1의 자료와 함께 입력하세요")
+    st.code("""다음 조건에 따라 .xlsx파일을 작성해줘
+    
+    --고정된 셀(각 셀 별로 변형없이 ':'이후부터 그대로 입력할 것)--
+    셀A1:question_id
+    셀B1:질문
+    셀C1:답변
+    
+    --나머지 셀--
+    첨부된 사진 또는 PDF 자료를 바탕으로 학습을 점검하기 위한 최대한 많은 단답형 질문을 만들어줘
+    A열에는 A2:0부터 시작하여 1씩 증가하는 질문 번호를 매겨줘
+    B열에는 B2부터 시작하여 만들어진 질문을 작성해줘
+    C열에는 C2부터 시작하여 만들어진 질문의 답변을 작성해줘
+    A,B,C열 이외에는 건드리지 말고, 빈 값이 없도록 하며, 질문 번호 작성은 마지막 질문까지 해줘
+    """)
 
 uploaded_file = st.file_uploader("3. AI가 만들어준 엑셀 파일을 업로드하세요",type=["xlsx"])
 if uploaded_file is not None:
