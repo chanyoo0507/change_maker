@@ -56,5 +56,7 @@ if uploaded_file is not None:
                 st.rerun()
             if answer == question['answer']:
                 st.markdown(":green[정답]")
+                st.markdown(":green[입력한 답 : %s, 정답 : %s]"%(answer, question['answer']))
             else:
                 st.markdown(":red[오답]")
+                st.markdown(":red[입력한 답 : %s, 정답 : %s]"%(answer, question['answer']))
