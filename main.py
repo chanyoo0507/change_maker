@@ -37,19 +37,16 @@ def make_question(df):
     return {'question':question,'answers':answers,'answer':answers[a_index]}
 
 animations = load_animation()
-mode = 0
-if mode == 0:
-    uploaded_file = st.file_uploader("엑셀 파일을 업로드하세요",type=["xlsx"])
-    if uploaded_file is not None:
-        df = load_file(uploaded_file)
-        next = st.button("다음으로")
-        if next:
-            mode = 1
-if mode == 1:
+uploaded_file = st.file_uploader("엑셀 파일을 업로드하세요",type=["xlsx"])
+if uploaded_file is not None:
+    df = load_file(uploaded_file)
+    next = st.button("다음으로")
     if next:
         question = make_question(df)
-    answer = st.radio(question['question'],question['answers'])
-    if answer == question['answer']:
-        st.markdown(":green[정답]")
-    else:
-        st.markdown(":red[오답]")
+    if question:
+        answer = st.radio(question['question'],question['answers'],index=None)
+        if answer is not None:
+            if answer == question['answer']:
+                st.markdown(":green[정답]")
+            else:
+                st.markdown(":red[오답]")
