@@ -37,6 +37,7 @@ def make_question(df):
             wrong_answers.remove(wrong_answer)
     return {'question':question,'answers':answers,'answer':answers[a_index]}
 
+animations = load_animation()
 while animations is None:
     animations = load_animation()
 mode = 0
