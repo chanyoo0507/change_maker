@@ -61,7 +61,7 @@ def partial_reset():
         st.session_state["next"] = 0
         st.session_state["questions_left"] = []
         st.session_state["question_now"] = 0
-        rerun()
+        st.rerun()
 
 st.session_state.setdefault("questions_left",[])
 st.session_state.setdefault("question_now",0)
