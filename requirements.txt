@@ -1,6 +1,6 @@
 streamlit
 pandas
 openpyxl
-streamlit_lottie
+streamlit-lottie
 random
 requests
