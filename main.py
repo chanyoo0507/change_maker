@@ -2,7 +2,7 @@ import streamlit as st
 import pandas as pd
 import random
 import requests as rq
-from streamlit_lottie import st_lottie
+from streamlit-lottie import st_lottie
 
 st.title("암기도우미 1.0")
 
