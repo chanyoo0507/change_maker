@@ -14,7 +14,7 @@ def load_animation(url):
 
 def print_animation(animation):
     if animation is not None:
-        st_lottie(animation, speed=2, loop=False, width=400, height=400)
+        st_lottie(animation, speed=2, loop=False, width=100, height=100)
 
 def load_file(uploaded_file):
     df = pd.read_excel(uploaded_file)
