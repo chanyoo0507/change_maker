@@ -76,8 +76,8 @@ st.code("""다음 조건에 따라 .xlsx파일을 작성해줘
 셀A1:question_id
 셀B1:질문
 셀C1:답변
---나머지 셀--
 
+--나머지 셀--
 첨부된 사진 또는 PDF 자료를 바탕으로 학습을 점검하기 위한 최대한 많은 단답형 질문을 만들어줘
 A열에는 A2:0부터 시작하여 1씩 증가하는 질문 번호를 매겨줘
 B열에는 B2부터 시작하여 만들어진 질문을 작성해줘
@@ -96,6 +96,7 @@ if uploaded_file is not None:
         st.session_state["next"] = 1
         st.session_state["answered"] = False
     if st.session_state["next"] == 1:
+        st.subheader("문제")
         question = st.session_state["question"]
         answer = st.radio(question['question'],question['answers'],index=None,disabled=st.session_state["answered"])
         if answer is not None:
