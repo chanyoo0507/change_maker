@@ -51,8 +51,8 @@ if uploaded_file is not None:
     if st.session_state["next"] == 1:
         question = st.session_state["question"]
         answer = st.radio(question['question'],question['answers'],index=None,disabled=st.session_state["answered"])
+        st.session_state["answered"] = True
         if answer is not None:
-            st.session_state["answered"] = True
             if answer == question['answer']:
                 st.markdown(":green[정답]")
             else:
