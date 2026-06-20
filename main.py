@@ -56,6 +56,10 @@ def select_question(df, mode):
         question_id = 0
     return question_id
 
+def partial_reset():
+    st.session_state["next"] = 0
+    st.session_state["questions_left"] = []
+    st.session_state["question_now"] = 0
 
 st.session_state.setdefault("questions_left",[])
 st.session_state.setdefault("question_now",0)
@@ -112,3 +116,5 @@ if uploaded_file is not None:
                 print_animation(st.session_state["animation2"])
                 st.markdown(":red[오답]")
                 st.markdown(":red[입력한 답 : %s, 정답 : %s]"%(answer, question['answer']))
+else:
+    partial_reset()
