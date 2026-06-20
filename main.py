@@ -43,7 +43,7 @@ if uploaded_file is not None:
     next = st.button("다음으로")
     if next:
         question = make_question(df)
-    if question:
+    if question is not None:
         answer = st.radio(question['question'],question['answers'],index=None)
         if answer is not None:
             if answer == question['answer']:
