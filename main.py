@@ -9,10 +9,6 @@ st.title("암기도우미 1.0")
 def load_animation():
     r1 = rq.get("https://lottiefiles.com/free-animation/correct-JwZs0nPkwu")
     r2 = rq.get("https://lottiefiles.com/free-animation/incorrect-NZdw5E0PZC")
-    if r1.status_code != 200:
-        return None
-    if r2.status_code != 200:
-        return None
     return (r1.json(),r2.json())
 
 def print_animation(animations, index):
@@ -40,8 +36,6 @@ def make_question(df):
     return {'question':question,'answers':answers,'answer':answers[a_index]}
 
 animations = load_animation()
-while animations is None:
-    animations = load_animation()
 mode = 0
 if mode == 0:
     uploaded_file = st.file_uploader("엑셀 파일을 업로드하세요",type=["xlsx"])
