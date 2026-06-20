@@ -6,6 +6,7 @@ from streamlit_lottie import st_lottie
 
 st.title("암기도우미 1.0")
 
+@st.cache_data
 def load_animation():
     r1 = rq.get("https://lottiefiles.com/free-animation/correct-JwZs0nPkwu")
     r2 = rq.get("https://lottiefiles.com/free-animation/incorrect-NZdw5E0PZC")
