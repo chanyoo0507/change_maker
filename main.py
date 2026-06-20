@@ -14,7 +14,7 @@ def load_animation():
         return None
     if r2.status_code != 200:
         return None
-    return (r1.json(),r2.json())
+    return r1.json()
 
 def print_animation(animations, index):
     st_lottie(animations[index], speed=2, loop=False, width=400, height=400)
