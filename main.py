@@ -14,7 +14,7 @@ def load_animation():
         return None
     if r2.status_code != 200:
         return None
-    return r1.json()
+    return (r1.json(),r1.json())
 
 def print_animation(animations, index):
     if animations is not None:
