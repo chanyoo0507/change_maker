@@ -37,7 +37,6 @@ def make_question(df):
     return {'question':question,'answers':answers,'answer':answers[a_index]}
 
 st.session_state.setdefault("next", 0)
-st.session_state.setdefault("answered", False)
 
 animations = load_animation()
 uploaded_file = st.file_uploader("엑셀 파일을 업로드하세요",type=["xlsx"])
@@ -50,9 +49,9 @@ if uploaded_file is not None:
         st.session_state["answered"] = False
     if st.session_state["next"] == 1:
         question = st.session_state["question"]
-        answer = st.radio(question['question'],question['answers'],index=None,disabled=True)
-        st.session_state["answered"] = True
+        answer = st.radio(question['question'],question['answers'],index=None,disabled=False)
         if answer is not None:
+            answer = st.radio(question['question'],question['answers'],index=answer,disabled=True)
             if answer == question['answer']:
                 st.markdown(":green[정답]")
             else:
