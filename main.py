@@ -9,7 +9,7 @@ st.title("암기도우미 1.0")
 def load_animation():
     r1 = rq.get("https://lottiefiles.com/free-animation/correct-JwZs0nPkwu")
     r2 = rq.get("https://lottiefiles.com/free-animation/incorrect-NZdw5E0PZC")
-    return (r1.json(),r2.json())
+    return (r1.json(),r2.json()) if r1.ok and r2.ok else None
 
 def print_animation(animations, index):
     st_lottie(animations[index], speed=2, loop=False, width=400, height=400)
