@@ -43,7 +43,7 @@ def select_question(df, mode):
     elif mode == "순서 섞기":
         if st.session_state["questions_left"] == []:
             st.session_state["questions_left"] == df["question_id"].tolist()
-        question_id = st.session_state["questions_left"][random.randint(0,len(st.session_state["questions_left"]))-1]
+        question_id = st.session_state["questions_left"][random.randint(0,len(st.session_state["questions_left"])-1)]
         st.session_state["questions_left"].remove(question_id)
     elif mode == "순서대로":
         question_id = st.session_state["question_now"]
