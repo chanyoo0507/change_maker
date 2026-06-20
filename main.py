@@ -39,7 +39,6 @@ def make_question(df):
 
 st.session_state.setdefault("next", 0)
 
-animations = load_animation()
 uploaded_file = st.file_uploader("엑셀 파일을 업로드하세요",type=["xlsx"])
 if uploaded_file is not None:
     df = load_file(uploaded_file)
