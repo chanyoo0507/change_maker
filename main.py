@@ -50,7 +50,7 @@ if mode == 0:
 if mode == 1:
     question = make_question(df)
     answer = st.radio(question['question'],question['answers'])
-    if answer = question[answer]:
+    if answer == question[answer]:
         st.markdown(":green[정답]")
     else:
         st.markdown(":red[오답]")
