@@ -101,6 +101,7 @@ if uploaded_file is not None:
         st.session_state["question"] = make_question(df, question_id)
         st.session_state["next"] = 1
         st.session_state["answered"] = False
+        st.rerun
     if st.session_state["next"] == 1:
         st.subheader("문제")
         question = st.session_state["question"]
