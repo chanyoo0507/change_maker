@@ -50,7 +50,7 @@ if uploaded_file is not None:
         st.session_state["answered"] = False
     if st.session_state["next"] == 1:
         question = st.session_state["question"]
-        answer = st.radio(question['question'],question['answers'],index=None,disabled=st.session_state["answered"])
+        answer = st.radio(question['question'],question['answers'],index=None,disabled=True)
         st.session_state["answered"] = True
         if answer is not None:
             if answer == question['answer']:
