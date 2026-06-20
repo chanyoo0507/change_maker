@@ -19,7 +19,7 @@ def load_file(uploaded_file):
     return df
 
 def make_question(df):
-    q_index = random.randint(0,len(df["question_id"]))
+    q_index = random.randint(0,len(df["question_id"])-1)
     question = df["질문"][q_index]
     answer_list = df["답변"]
     answer = answer_list[q_index]
