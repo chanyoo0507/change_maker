@@ -19,8 +19,8 @@ def load_file(uploaded_file):
     df = pd.read_excel(uploaded_file)
     return df
 
-def make_question(df):
-    q_index = random.randint(0,len(df["question_id"])-1)
+def make_question(df, question_id):
+    q_index = question_id
     question = df["질문"][q_index]
     answer_list = df["답변"]
     answer = answer_list[q_index]
@@ -37,6 +37,27 @@ def make_question(df):
             wrong_answers.remove(wrong_answer)
     return {'question':question,'answers':answers,'answer':answers[a_index]}
 
+def select_question(df, mode):
+    if mode == "랜덤":
+        question_id = random.randint(0,len(df["question_id"])-1)
+    elif mode == "순서 섞기":
+        if st.session_state["questions_left"] == []:
+            st.session_state["questions_left"] == df["question_id"].tolist()
+        question_id = st.session_state["questions_left"][random.randint(0,len(st.session_state["questions_left"])-1]
+        st.session_state["questions_left"].remove(question_id)
+    elif mode == "순서대로":
+        question_id = st.session_state["question_now"]
+        st.session_state["question_now"] += 1
+        if st.session_state["question_now"] >= len(df["question_id"]):
+            st.session_state["question_now"] = 0
+    else:
+        st.warning("문제를 배정할 수 없습니다")
+        question_id = 0
+    return question_id
+
+
+st.session_state.setdefault("questions_left",[])
+st.session_state.setdefault("question_now",0)
 st.session_state.setdefault("next", 0)
 st.session_state.setdefault("animations", None)
 if st.session_state["animations"] is None:
@@ -45,9 +66,11 @@ if st.session_state["animations"] is None:
 uploaded_file = st.file_uploader("엑셀 파일을 업로드하세요",type=["xlsx"])
 if uploaded_file is not None:
     df = load_file(uploaded_file)
+    mode = st.selectbox("문제 순서를 선택해주세요",["랜덤", "순서 섞기", "순서대로"])
     next = st.button("다음으로")
     if next:
-        st.session_state["question"] = make_question(df)
+        question_id = select_question(df, mode)
+        st.session_state["question"] = make_question(df, question_id)
         st.session_state["next"] = 1
         st.session_state["answered"] = False
     if st.session_state["next"] == 1:
