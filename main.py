@@ -30,7 +30,7 @@ def make_question(df):
         if i == a_index:
             answers.append(answer)
         else:
-            wrong_answer = wrong_answers[random.randint(0,len(answer_list))]
+            wrong_answer = wrong_answers[random.randint(0,len(wrong_answer)-1)]
             answers.append(wrong_answer)
             wrong_answers.remove(wrong_answer)
     return {'question':question,'answers':answers,'answer':answers[a_index]}
