@@ -7,18 +7,15 @@ from streamlit_lottie import st_lottie
 st.title("암기도우미 1.0")
 
 @st.cache_data
-def load_animation():
-    r1 = rq.get("https://lottie.host/0ab1b960-3f7a-4428-8134-b3a80dcb51ee/D7JGop9mCJ.json")
-    r2 = rq.get("https://lottie.host/d2070fb5-8d52-41e0-a50b-748dbea63ecf/HNnk4aRdpN.json")
-    if r1.status_code != 200:
+def load_animation(url):
+    r = rq.get(url)
+    if r.status_code != 200:
         return None
-    if r2.status_code != 200:
-        return None
-    return r1.json(),r2.json()
+    return r.json()
 
-def print_animation(animations, index):
-    if animations is not None:
-        st_lottie(animations[index], speed=2, loop=False, width=400, height=400)
+def print_animation(animation):
+    if animation is not None:
+        st_lottie(animation, speed=2, loop=False, width=400, height=400)
 
 def load_file(uploaded_file):
     df = pd.read_excel(uploaded_file)
@@ -64,9 +61,11 @@ def select_question(df, mode):
 st.session_state.setdefault("questions_left",[])
 st.session_state.setdefault("question_now",0)
 st.session_state.setdefault("next", 0)
-st.session_state.setdefault("animations", None)
-if st.session_state["animations"] is None:
-    st.session_state["animations"] = load_animation()
+if st.session_state["animation1"] is None:
+    st.session_state["animation1"] = load_animation("https://lottie.host/0ab1b960-3f7a-4428-8134-b3a80dcb51ee/D7JGop9mCJ.json")
+    st.rerun()
+if st.session_state["animation2"] is None:
+    st.session_state["animation2"] = load_animation("https://lottie.host/d2070fb5-8d52-41e0-a50b-748dbea63ecf/HNnk4aRdpN.json")
     st.rerun()
 
 uploaded_file = st.file_uploader("엑셀 파일을 업로드하세요",type=["xlsx"])
@@ -89,8 +88,8 @@ if uploaded_file is not None:
             if answer == question['answer']:
                 st.markdown(":green[정답]")
                 st.markdown(":green[입력한 답 : %s, 정답 : %s]"%(answer, question['answer']))
-                print_animation(st.session_state["animations"], 0)
+                print_animation(st.session_state["animation1"])
             else:
                 st.markdown(":red[오답]")
                 st.markdown(":red[입력한 답 : %s, 정답 : %s]"%(answer, question['answer']))
-                print_animation(st.session_state["animations"], 1)
+                print_animation(st.session_state["animation2"])
