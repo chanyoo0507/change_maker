@@ -69,8 +69,8 @@ if st.session_state["animation2"] is None:
 
 st.subheader("사용법")
 st.write("1. 학습을 원하는 내용의 학습자료(교과서, 프린트물 등)의 사진을 찍거나 PDF파일을 준비하세요")
-st.write("""2. 다음 프롬프트를 복사해 AI(gemini, chatGPT 등)에게 1의 자료와 함께 입력하세요")
-st.code("다음 조건에 따라 .xlsx파일을 작성해줘
+st.write("2. 다음 프롬프트를 복사해 AI(gemini, chatGPT 등)에게 1의 자료와 함께 입력하세요")
+st.code("""다음 조건에 따라 .xlsx파일을 작성해줘
         --고정된 셀(철자법, 띄어쓰기 등 매우 주의할것)--
         셀A1:question_id
         셀B1:질문
