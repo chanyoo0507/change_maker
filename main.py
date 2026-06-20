@@ -8,8 +8,8 @@ st.title("암기도우미 1.0")
 
 @st.cache_data
 def load_animation():
-    r1 = rq.get('https://lottie.host/07c18784-e513-474f-b579-2dfb46350ee8/mJoPjJKc5I.lottie')
-    r2 = rq.get('https://lottie.host/b45c4f65-636e-449a-807f-d7d2ccd117ed/DfQgP8x4Wg.lottie')
+    r1 = rq.get("https://lottie.host/07c18784-e513-474f-b579-2dfb46350ee8/mJoPjJKc5I.lottie")
+    r2 = rq.get("https://lottie.host/b45c4f65-636e-449a-807f-d7d2ccd117ed/DfQgP8x4Wg.lottie")
     if r1.status_code != 200:
         return None
     if r2.status_code != 200:
