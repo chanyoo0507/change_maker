@@ -83,6 +83,8 @@ if uploaded_file is not None:
             if answer == question['answer']:
                 st.markdown(":green[정답]")
                 st.markdown(":green[입력한 답 : %s, 정답 : %s]"%(answer, question['answer']))
+                print_animation(st.session_state["animations"], 0)
             else:
                 st.markdown(":red[오답]")
                 st.markdown(":red[입력한 답 : %s, 정답 : %s]"%(answer, question['answer']))
+                print_animation(st.session_state["animations"], 0)
