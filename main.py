@@ -67,6 +67,7 @@ st.session_state.setdefault("next", 0)
 st.session_state.setdefault("animations", None)
 if st.session_state["animations"] is None:
     st.session_state["animations"] = load_animation()
+    st.rerun()
 
 uploaded_file = st.file_uploader("엑셀 파일을 업로드하세요",type=["xlsx"])
 if uploaded_file is not None:
