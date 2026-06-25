@@ -122,5 +122,5 @@ if uploaded_file is not None:
                 st.markdown(":red[오답]")
                 st.markdown(":red[입력한 답 : %s, 정답 : %s]"%(answer, question['answer']))
 else:
-    st.warning("모바일에서 파일 업로드가 되지 않을 시 '다른 브라우저로 열기'를 시도하세요")
+    st.warning("모바일에서 파일 업로드가 되지 않을 시 ⁝ -> '다른 브라우저로 열기'를 시도하세요")
     partial_reset()
